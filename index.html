@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review It</title>
+    <link rel="stylesheet" href="./src/styles.css" />
 </head>
 <body>
     <h1>Review It </h1>
@@ -12,6 +13,10 @@
     <div class="form-container">  
         <form id="create-review-form"> 
             <pre>
+            <input id='input-first-name' type="text" name="name" value="" placeholder="First Name" class="input-text">  
+            
+            <input id='input-last-name' type="text" name="name" value="" placeholder="Last Name" class="input-text">
+
             <input id='input-name' type="text" name="name" value="" placeholder="Enter name of product..." class="input-text">
 
             <input id='input-image' type="text" name="image" value="" placeholder="Enter image URL" class="input-text">
@@ -19,20 +24,13 @@
             <input id='input-locaton' type="text" name="location" value="" placeholder="Enter location" class="input-text">
 
             <textarea id='input-feedback' name="feedback" rows="8" cols="80" value="" placeholder="Leave Feedback..."></textarea>
+
             </pre>
-            <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="text">1 star</label>
-              </div>
-              
+
+            <div class="stars-container"></div>
+            <div>Star Rating: <input type="number" id="star-rating" name="rating" min="1" max="5"></div>
+              <br>
+
               <div class="select-container">
                 <label for="select-category">Select Category</label>
                 <select id="item-dropdown" name="select-item">
@@ -44,10 +42,14 @@
                     <option value="6"> Health</option>
                 </select></br>
                 </div>
-              
+                <br> 
+               <button id="create-new-review"> Submit Review </button>
+               
         </form>   
 
     </div>
+
+    <div id="root"> </div>
     <script type="text/javascript" src="src/index.js" ></script>
 </body>
 
