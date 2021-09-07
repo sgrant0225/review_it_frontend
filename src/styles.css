@@ -6,16 +6,36 @@ body {
     align-items: center;
   }
   ​
-  ul {
+  
+  /* stars rating css feature*/
+
+  .stars-container {
     display: flex;
-    padding-left: 0;
-    list-style-type: none;
   }
-  ​
-  li {
-    margin: 5px;
+  
+  
+
+  .stars-container.disabled {
+    pointer-events: none;
   }
-  ​
-  .active {
-    color: #ffd700;
+
+  .stars-container a {
+    opacity: 50%;
+    cursor: pointer; 
+  }
+
+  .stars-container:hover a {
+    opacity: 100%; 
+  }
+
+  .stars-container a:hover {
+    opacity: 100%; 
+  }
+
+  .stars-container a:hover ~ a {
+    opacity: 50%;
+  }
+
+  .stars-container a.active {
+    opacity: 200%;
   }

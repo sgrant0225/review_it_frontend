@@ -1,10 +1,13 @@
 const getReviewForm = document.getElementById('create-review-form')
 
+
+    
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Document loaded")
    getReviews();
    getReviewForm.addEventListener("submit", (e) => 
    formEventHandler(e))
+  
 })
 
 function getReviews(){
@@ -77,3 +80,5 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
      })
   }
 
+
+  
