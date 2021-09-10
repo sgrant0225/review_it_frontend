@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@ body {
   }
   ​
   
-  /* stars rating css feature*/
+   stars rating css feature
 
   .stars-container {
     display: flex;
@@ -38,4 +38,33 @@ body {
 
   .stars-container a.active {
     opacity: 200%;
-  }
+  } */
+
+
+  .stars-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+}

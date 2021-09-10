@@ -10,8 +10,8 @@ class Review {
     this.feedback = reviewAttributes.feedback 
     this.stars = reviewAttributes.stars 
     this.category = reviewAttributes.category
-    //debugger
     Review.all.push(this)
+    //debugger
   }
 
    renderReviewCard(){
@@ -20,22 +20,16 @@ class Review {
         <br> <h2> ${this.product_name}</h2> </br>
         <br> <img src=${this.image_url} height="200" width="250"</p> </br>
         <br> <h3> Location: ${this.location}</h3> </br>
-        <section> <span> Feedback: ${this.feedback} </feedback> 
-        <br> <h4> Star Rating: ${this.stars}</h4> </br>
-        <br> <p> Category: ${this.category.name} </p> </br>
+        <br> <section> <span> Feedback: ${this.feedback} </feedback> <br>
+        <div class="stars-outer"> </div>
+         <div class="stars-inner"></div>
+        <br> <p> Star Rating: ${this.stars} <p></br>
+         <p> Category: ${this.category.name} </p> </br>
         <button data-id=${this.id} type="button" class="delete-button">Delete</button>
       </div>  
       `
    }
-     
-    
-
-
 }
 
 
-  
-
-
-
-Review.all = [];
+  Review.all = [];
