@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
    getReviews();
    getReviewForm.addEventListener("submit", (e) => 
    formEventHandler(e))
-   
   
 })
 
@@ -21,8 +20,10 @@ function getReviews(){
         let newReview = new Review(review, review.attributes)
         document.getElementById("root").innerHTML += newReview.renderReviewCard();
        })
+
        const deleteEvent = document.querySelectorAll(".delete-button")
         .forEach((button) => button.addEventListener("click", deleteReview))
+
      })
      
   }
@@ -63,7 +64,8 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
               const reviewData = review.data
               let newReview = new Review(reviewData, reviewData.attributes)
               document.getElementById("root").innerHTML += newReview.renderReviewCard();
-    })
+              })
+
   }
 
   function deleteReview(e) {
@@ -85,8 +87,8 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
 //I want to run this function after the post request and convert the stars user inputs to stars
    function getStarRatings(){
     const starRating = document.querySelector('#star-rating').value
+    //debugger
     const starsTotal = 5;
-     console.log(starRating)
      //now that you have the starRating input value, I now can fill the stars with that rating
      const starPercentage = (starRating / starsTotal) * 100; 
        console.log(starPercentage)
@@ -94,7 +96,6 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
        console.log(starPercentageRounded)
 
        //set width of star-inner to percentage(how many starr will get filled)
-       document.querySelector('.stars-inner').style.width = starPercentageRounded
-       //document.querySelector('root').innerHTML += starPercentageRounded
+       document.querySelector('.stars-inner').style.width = starPercentageRounded;       //document.querySelector('root').innerHTML += starPercentageRounded
      
    }

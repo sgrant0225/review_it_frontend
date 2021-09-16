@@ -21,8 +21,9 @@ class Review {
         <br> <img src=${this.image_url} height="200" width="250"</p> </br>
         <br> <h3> Location: ${this.location}</h3> </br>
         <br> <section> <span> Feedback: ${this.feedback} </feedback> <br>
-        <div class="stars-outer"> </div>
-         <div class="stars-inner"></div>
+        <div class="stars-outer">
+        <div class="stars-inner"></div>
+        </div> 
         <br> <p> Star Rating: ${this.stars} <p></br>
          <p> Category: ${this.category.name} </p> </br>
         <button data-id=${this.id} type="button" class="delete-button">Delete</button>
