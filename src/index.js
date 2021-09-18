@@ -1,31 +1,34 @@
-const getReviewForm = document.getElementById('create-review-form')
+
 
 
     
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Document loaded")
    getReviews();
+   
+   const getReviewForm = document.getElementById('create-review-form')
    getReviewForm.addEventListener("submit", (e) => 
    formEventHandler(e))
-  
+
+   const sortReviewButton = document.querySelector("#sort-btn")
+   sortReviewButton.addEventListener("click", (e) => {
+     sortReviews()
+   })
+   
 })
 
 function getReviews(){
   fetch("http://localhost:3000/api/v1/reviews")
     .then(response => response.json())
     .then(info => { 
-      
-       info.data.forEach(review => {
-        //debugger  
+      info.data.forEach(review => { 
         let newReview = new Review(review, review.attributes)
         document.getElementById("root").innerHTML += newReview.renderReviewCard();
        })
 
        const deleteEvent = document.querySelectorAll(".delete-button")
         .forEach((button) => button.addEventListener("click", deleteReview))
-
-     })
-     
+    })
   }
 
   
@@ -44,7 +47,7 @@ function formEventHandler(e){
     //const starRating = document.querySelectorAll('.stars-container')
     const categoryId = parseInt(document.querySelector('#categories').value)
     postFetchReviews(firstNameInput, lastNameInput, productNameInput, imageInput, locationInput, feedbackInput, starRatingInput, categoryId)
-    getStarRatings();
+    //getStarRatings();
     e.target.reset();
 }
 
@@ -64,12 +67,15 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
               const reviewData = review.data
               let newReview = new Review(reviewData, reviewData.attributes)
               document.getElementById("root").innerHTML += newReview.renderReviewCard();
-              })
+              
+              const deleteEvent = document.querySelectorAll(".delete-button")
+              .forEach((button) => button.addEventListener("click", deleteReview))
+          })
 
   }
 
   function deleteReview(e) {
-     const id = e.target.dataset.id //target the delete button id
+     const id = e.target.dataset.id //targeting the delete button that has the id
     fetch(`http://localhost:3000/api/v1/reviews/${id}`, {
       method: "DELETE", 
      })
@@ -77,12 +83,41 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
      .then(deleteData => {
       Review.all = Review.all.filter(review => review.id != deleteData.id)
             
-      document.getElementById('root').innerHTML = "";
+      document.getElementById('root').innerHTML = "";  //rewriting the HTML 
         Review.all.forEach(filteredReview => {
           document.getElementById('root').innerHTML += filteredReview.renderReviewCard();
+
+          const deleteEvent = document.querySelectorAll(".delete-button")
+         .forEach((button) => button.addEventListener("click", deleteReview))
         })
      })
   }
+
+  function sortReviews() {
+    Review.all.sort(function(a, b){
+      const  nameA = a.product_name
+      const nameB = b.product_name
+      console.log(nameA)
+      console.log(nameB)
+    })
+
+  }
+//    //items.sort(function(a, b) {
+//   var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+//   var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+//   if (nameA < nameB) {
+//     return -1;
+//   }
+//   if (nameA > nameB) {
+//     return 1;
+//   }
+
+//   // names must be equal
+//   return 0;
+// });
+
+
+
 
 //I want to run this function after the post request and convert the stars user inputs to stars
    function getStarRatings(){
