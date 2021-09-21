@@ -94,27 +94,31 @@ function postFetchReviews(first_name, last_name, product_name, image_url, locati
   }
 
   function sortReviews() {
-    Review.all.sort(function(a, b){
-      const  nameA = a.product_name
-      const nameB = b.product_name
-      console.log(nameA)
-      console.log(nameB)
+    Review.all = Review.all.sort((a, b) => {
+      let nameA = a.product_name.toLowerCase();
+      let nameB = b.product_name.toLowerCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB){
+          return 1;
+        }
+        return 0;
+   })
+   document.getElementById('root').innerHTML = "";
+    Review.all.forEach((r) => {
+      document.getElementById('root').innerHTML += r.renderReviewCard();
     })
-
   }
-//    //items.sort(function(a, b) {
-//   var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-//   var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-//   if (nameA < nameB) {
-//     return -1;
-//   }
-//   if (nameA > nameB) {
-//     return 1;
-//   }
-
-//   // names must be equal
-//   return 0;
-// });
+    
+    
+   
+        
+        
+        
+        
+      
+      
 
 
 

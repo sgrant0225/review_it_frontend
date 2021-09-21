@@ -6,6 +6,10 @@
   background-color: #ff520078!important;
 }
 
+.bg-light {
+  background-color: #ff520078!important;
+}
+
 .jumbotron {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -21,6 +25,13 @@
     color: #622121;
     text-align: left;
     background-color: #fff;
+}
+
+b, strong {
+  /*font-weight: bolder;*/
+  font-family: 'Lilita One';
+  font-size: 2rem;
+  color: #622121;
 }
 
   @media (min-width: 768px) {

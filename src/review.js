@@ -19,6 +19,7 @@ class Review {
      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">       
       <div class="col">
        <div class="card shadow-sm">
+       
           <img src="${this.image_url}" class="card-img-top" alt="...">
          
          <div class="card-body" data-id=${this.id}>
